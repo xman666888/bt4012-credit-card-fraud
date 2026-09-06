@@ -1,0 +1,32 @@
+project:
+  course: BT4012 Fraud Analytics
+  academic_year: 2026/2027 Semester 1
+  random_seed: 4012
+
+data:
+  primary_dataset: Sparkov simulated credit-card transactions
+  train_path: data/raw/fraudTrain.csv
+  test_path: data/raw/fraudTest.csv
+  target: is_fraud
+  timestamp: trans_date_trans_time
+  validation_fraction: 0.20
+  split_strategy: chronological
+
+evaluation:
+  primary_metric: pr_auc
+  secondary_metrics:
+    - recall
+    - precision
+    - f1
+    - roc_auc
+  default_threshold: 0.50
+
+models:
+  baselines:
+    - dummy_prior
+    - logistic_regression
+  candidates:
+    - random_forest
+    - xgboost
+    - lightgbm
+    - catboost
