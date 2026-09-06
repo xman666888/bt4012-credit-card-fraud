@@ -100,7 +100,7 @@ A rubric-aligned writing plan is in [`docs/report_outline.md`](docs/report_outli
 
 ## Team
 
-- Group number: **TBC**
+- Group number: **17**
 - Members: **to be added after invitations are accepted**
 
 ## License and attribution
