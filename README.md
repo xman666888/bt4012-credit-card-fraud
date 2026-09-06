@@ -101,7 +101,7 @@ A rubric-aligned writing plan is in [`docs/report_outline.md`](docs/report_outli
 ## Team
 
 - Group number: **17**
-- Members: **to be added after invitations are accepted**
+- Members: **LYCIA YEO YING XUAN，PHANG XIN YI，XIANG QIUYU，YANG TONGHANG**
 
 ## License and attribution
 
