@@ -1,6 +1,6 @@
 # BT4012 Credit Card Fraud Detection
 
-Course project for **BT4012 Fraud Analytics, AY2026/2027 Semester 1**.
+Course project for **BT4012 Fraud Analytics, AY2026/2027 Semester 1, Group 17**.
 
 ## Project objective
 
@@ -24,6 +24,12 @@ The project focuses on three fraud-analytics challenges:
 - **Candidate extensions:** Random Forest, XGBoost, LightGBM and CatBoost.
 - **Primary evaluation metric:** PR-AUC. Recall, precision, F1, ROC-AUC, confusion
   matrices and threshold/cost analysis will also be reported.
+- **Concept-drift check:** compare feature-distribution change (KS/PSI) with model
+  performance across chronological test windows.
+- **Label-delay simulation:** hide the labels of every transaction in the latest seven-day
+  window, rather than hiding fraud labels only.
+- **Card-history ablation:** compare results with and without reconstructed card-level
+  history features to quantify leakage or memorisation risk.
 
 Logistic Regression is treated as the linear baseline. Accuracy is not a primary metric
 because the non-fraud class dominates the data.
@@ -101,7 +107,14 @@ A rubric-aligned writing plan is in [`docs/report_outline.md`](docs/report_outli
 ## Team
 
 - Group number: **17**
-- Members: **LYCIA YEO YING XUAN，PHANG XIN YI，XIANG QIUYU，YANG TONGHANG**
+- Yang Tonghang (Gary) — GitHub: `xman666888` — feature engineering
+- Phang Xin Yi — GitHub: `xin-yi-phang` — exploratory data analysis
+- Xiang Qiuyu — GitHub: `xiang-qiuyu` — M3 algorithm proposal and M4 decision
+- Lycia Yeo Ying Xuan — GitHub: `lyciayeo` — card-ID reconstruction
+
+The current internal checkpoint is **17 October 2026**, with the next team meeting at
+**9:00 pm**. See [`docs/team_plan.md`](docs/team_plan.md) for the latest work split and
+consultation-action checklist.
 
 ## License and attribution
 

@@ -1,7 +1,10 @@
 project:
   course: BT4012 Fraud Analytics
   academic_year: 2026/2027 Semester 1
+  group: 17
   random_seed: 4012
+  internal_checkpoint: 2026-10-17
+  next_team_meeting: 2026-10-17T21:00:00+08:00
 
 data:
   primary_dataset: Sparkov simulated credit-card transactions
@@ -20,6 +23,19 @@ evaluation:
     - f1
     - roc_auc
   default_threshold: 0.50
+  label_delay_days: 7
+  hide_all_labels_in_delay_window: true
+  precision_at_k_unit: pending_team_decision
+
+analysis:
+  concept_drift:
+    distribution_metrics:
+      - ks
+      - psi
+    require_performance_by_time_window: true
+  card_history_ablation:
+    compare_with_and_without_history: true
+    reconstructed_card_id_required: true
 
 models:
   baselines:
