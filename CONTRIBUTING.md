@@ -26,6 +26,6 @@
 
 ## Academic integrity and attribution
 
-Record external code, public notebooks, copied or adapted snippets, and material
-generative-AI assistance in `docs/attribution_log.md`. Contributors must understand and
-be able to explain every submitted component.
+Record external code, public notebooks and copied or adapted snippets in
+`docs/attribution_log.md`. Generative-AI assistance is acknowledged in the final report.
+Contributors must understand and be able to explain every submitted component.

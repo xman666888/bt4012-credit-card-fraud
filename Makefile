@@ -1,4 +1,4 @@
-.PHONY: setup download test lint baseline
+.PHONY: setup download test lint baseline features
 
 setup:
 	python -m pip install -e ".[dev]"
@@ -14,3 +14,6 @@ lint:
 
 baseline:
 	python -m bt4012_fraud.baseline --train-csv data/raw/fraudTrain.csv --output-dir artifacts/baseline
+
+features:
+	python -m bt4012_fraud.feature_ablation sparkov --train-csv data/raw/fraudTrain.csv --output-dir artifacts/feature_ablation/sparkov

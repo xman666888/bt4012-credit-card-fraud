@@ -6,14 +6,27 @@ project:
   internal_checkpoint: 2026-10-17
   next_team_meeting: 2026-10-17T21:00:00+08:00
 
-data:
-  primary_dataset: Sparkov simulated credit-card transactions
-  train_path: data/raw/fraudTrain.csv
-  test_path: data/raw/fraudTest.csv
-  target: is_fraud
-  timestamp: trans_date_trans_time
-  validation_fraction: 0.20
-  split_strategy: chronological
+datasets:
+  sparkov:
+    role: primary
+    train_path: data/raw/fraudTrain.csv
+    test_path: data/raw/fraudTest.csv
+    target: is_fraud
+    timestamp: trans_date_trans_time
+    entity_id: cc_num            # grouping only; dropped before fitting
+    validation_fraction: 0.20
+    split_strategy: chronological
+  ieee_cis:
+    role: real_data_replication
+    transaction_path: data/raw/train_transaction.csv
+    identity_path: data/raw/train_identity.csv
+    join_key: TransactionID      # left join; ~24.4% have identity records
+    target: isFraud
+    timestamp: TransactionDT     # elapsed seconds, not a calendar date
+    entity_id: pending_card_reconstruction
+    official_test_used: false    # competition test files have no labels
+    split_strategy: chronological
+    split_fractions: pending_team_decision   # train / validation / held-out test
 
 evaluation:
   primary_metric: pr_auc
@@ -35,14 +48,17 @@ analysis:
     require_performance_by_time_window: true
   card_history_ablation:
     compare_with_and_without_history: true
-    reconstructed_card_id_required: true
+    reconstructed_card_id_required: true   # IEEE-CIS only; Sparkov uses cc_num
+  card_history_label_propagation_check: true   # IEEE-CIS
+  replicate_full_pipeline_on_each_dataset: true
 
 models:
-  baselines:
-    - dummy_prior
+  reference: dummy_prior
+  m0_families:
     - logistic_regression
-  candidates:
     - random_forest
-    - xgboost
-    - lightgbm
     - catboost
+  m1: class_weights
+  m2: sliding_window_retraining
+  m3: pending_team_decision     # named semi-supervised algorithm
+  m4: pending_team_decision     # anomaly score as feature vs combined with output

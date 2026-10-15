@@ -14,25 +14,59 @@ The project focuses on three fraud-analytics challenges:
 
 ## Current scope and decisions
 
-- **Primary dataset:** Sparkov simulated credit-card transactions.
-- **Training/validation:** chronological split within `fraudTrain.csv`.
-- **Final in-domain test:** the untouched `fraudTest.csv` file.
-- **Optional external robustness test:** a compatible subset generated with the
-  Fraud Detection Handbook simulator or sampled from IBM TabFormer. External results
-  will be reported separately because they represent distribution shift.
-- **Baselines:** Dummy Classifier and Logistic Regression.
-- **Candidate extensions:** Random Forest, XGBoost, LightGBM and CatBoost.
-- **Primary evaluation metric:** PR-AUC. Recall, precision, F1, ROC-AUC, confusion
-  matrices and threshold/cost analysis will also be reported.
-- **Concept-drift check:** compare feature-distribution change (KS/PSI) with model
-  performance across chronological test windows.
-- **Label-delay simulation:** hide the labels of every transaction in the latest seven-day
-  window, rather than hiding fraud labels only.
-- **Card-history ablation:** compare results with and without reconstructed card-level
-  history features to quantify leakage or memorisation risk.
+### Datasets
 
-Logistic Regression is treated as the linear baseline. Accuracy is not a primary metric
-because the non-fraud class dominates the data.
+Both datasets are used. The full pipeline is run independently on each, and results are
+compared side by side. See [`docs/dataset_decision.md`](docs/dataset_decision.md).
+
+| Dataset | Role | Evaluation |
+|---|---|---|
+| **Sparkov** (synthetic, CC0) | Primary | Chronological split within `fraudTrain.csv`; untouched `fraudTest.csv` as final test |
+| **IEEE-CIS / Vesta** (real, anonymised) | Real-data replication | Chronological split within the labelled training file; the unlabelled competition test is not used |
+
+### Models
+
+An incremental M0-M4 ladder, with a Dummy classifier as reference:
+
+| Stage | Change from previous stage |
+|---|---|
+| M0 | LR, RF and CatBoost base classifiers |
+| M1 | Cost-sensitive class weights |
+| M2 | Sliding-window retraining |
+| M3 | Semi-supervised use of recent unlabelled transactions (algorithm to be named) |
+| M4 | Unsupervised anomaly score (integration rule to be decided) |
+
+The strongest of LR, RF and CatBoost after M2 is carried into M3 and M4. See
+[`docs/experiment_plan.md`](docs/experiment_plan.md).
+
+### Evaluation
+
+- **Primary metric:** PR-AUC.
+- **Also reported:** recall, precision, F1, ROC-AUC, confusion matrices and Precision@k.
+  The unit of `k` (transactions or cards) must match what the model scores.
+- **Accuracy:** not a primary metric, because the non-fraud class dominates the data.
+
+### Checks required by the TA feedback
+
+- **Concept-drift check:** compare KS/PSI with model performance across chronological
+  windows.
+- **Label-delay simulation:** hide the labels of every transaction in the latest seven-day
+  window, not only the fraud labels.
+- **Card-history ablation:** report results with and without card-history features. On
+  IEEE-CIS this tests whether the model only learns that a card was flagged before.
+
+### Current code status
+
+`src/` currently implements:
+
+- the Sparkov loader and the chronological split;
+- the evaluation helpers and the Dummy/LR baseline;
+- leakage-safe transaction and card-history features for both datasets
+  ([`docs/features.md`](docs/features.md));
+- the transaction-only versus history ablation script.
+
+Still to be added: the IEEE-CIS card reconstruction (a provisional key is used until
+then), and M1-M4.
 
 ## Repository structure
 
@@ -58,14 +92,25 @@ source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -e ".[dev]"
 bash scripts/download_sparkov.sh
+# IEEE-CIS: accept the competition rules on Kaggle, then place train_transaction.csv and
+# train_identity.csv in data/raw/ (see data/README.md)
 python -m bt4012_fraud.baseline \
   --train-csv data/raw/fraudTrain.csv \
   --output-dir artifacts/baseline
 ```
 
-The baseline command sorts transactions by time, trains only on earlier observations,
+The baseline command currently runs on Sparkov only. It sorts transactions by time, trains only on earlier observations,
 validates on later observations, and writes metrics plus fitted pipelines to
 `artifacts/baseline/`. The official test file is intentionally excluded from this step.
+
+To run the feature-engineering ablation (transaction-only versus card-history features):
+
+```bash
+make features
+```
+
+See [`docs/features.md`](docs/features.md) for the feature list, leakage rules and the
+IEEE-CIS command.
 
 To install the optional boosting libraries:
 
@@ -91,8 +136,9 @@ Do not commit raw data, Kaggle credentials, fitted models, or personal informati
 - Keep notebooks exploratory; move reusable logic into `src/`.
 - Record important experiments, random seeds and data versions.
 - Do not tune models against the final test set.
-- Add any external code, public notebook or generative-AI assistance to
-  [`docs/attribution_log.md`](docs/attribution_log.md).
+- Add any external code or public notebook to
+  [`docs/attribution_log.md`](docs/attribution_log.md); acknowledge generative-AI
+  assistance in the final report.
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the complete collaboration rules.
 
@@ -108,9 +154,9 @@ A rubric-aligned writing plan is in [`docs/report_outline.md`](docs/report_outli
 
 - Group number: **17**
 - Yang Tonghang (Gary) — GitHub: `xman666888` — feature engineering
-- Phang Xin Yi — GitHub: `xin-yi-phang` — exploratory data analysis
+- Phang Xin Yi — GitHub: `xin-yi-phang` — data audit and exploratory data analysis
 - Xiang Qiuyu — GitHub: `xiang-qiuyu` — M3 algorithm proposal and M4 decision
-- Lycia Yeo Ying Xuan — GitHub: `lyciayeo` — card-ID reconstruction
+- Lycia Yeo Ying Xuan — GitHub: `lyciayeo` — IEEE-CIS card-ID reconstruction
 
 The current internal checkpoint is **17 October 2026**, with the next team meeting at
 **9:00 pm**. See [`docs/team_plan.md`](docs/team_plan.md) for the latest work split and

@@ -1,0 +1,137 @@
+{
+  "info": {
+    "dataset": "sparkov",
+    "source": "data/raw/fraudTrain.csv",
+    "entity": "cc_num",
+    "sha256": "fd7139200dbfcbed0b6742bbe05a4f1abce532c4fef20918228a651647a3e75d"
+  },
+  "random_state": 4012,
+  "feature_sets": {
+    "transaction_only": {
+      "numeric_features": [
+        "log_amt",
+        "hour",
+        "day_of_week",
+        "is_weekend",
+        "is_night",
+        "age",
+        "distance_km",
+        "log_city_pop"
+      ],
+      "categorical_features": [
+        "category",
+        "gender",
+        "state"
+      ],
+      "split": {
+        "train_rows": 1037340,
+        "validation_rows": 259335,
+        "train_end": "2020-03-06T07:15:17",
+        "validation_start": "2020-03-06T07:16:43",
+        "train_fraud_rate": 0.005753176393467908,
+        "validation_fraud_rate": 0.005930553145545337
+      },
+      "models": {
+        "dummy_prior": {
+          "threshold": 0.5,
+          "pr_auc": 0.005930553145545337,
+          "roc_auc": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "true_negatives": 257797,
+          "false_positives": 0,
+          "false_negatives": 1538,
+          "true_positives": 0,
+          "fit_and_score_seconds": 4.1
+        },
+        "logistic_regression": {
+          "threshold": 0.5,
+          "pr_auc": 0.28916325414305605,
+          "roc_auc": 0.9244340360685304,
+          "precision": 0.030484956082975145,
+          "recall": 0.8485045513654096,
+          "f1": 0.05885536463266135,
+          "true_negatives": 216294,
+          "false_positives": 41503,
+          "false_negatives": 233,
+          "true_positives": 1305,
+          "fit_and_score_seconds": 12.6
+        }
+      }
+    },
+    "transaction_plus_history": {
+      "numeric_features": [
+        "log_amt",
+        "hour",
+        "day_of_week",
+        "is_weekend",
+        "is_night",
+        "age",
+        "distance_km",
+        "log_city_pop",
+        "secs_since_prev",
+        "prior_txn_count",
+        "is_first_txn",
+        "amt_to_prior_mean",
+        "amt_prior_zscore",
+        "txn_count_1h",
+        "amt_sum_1h",
+        "amt_mean_1h",
+        "txn_count_24h",
+        "amt_sum_24h",
+        "amt_mean_24h",
+        "txn_count_7d",
+        "amt_sum_7d",
+        "amt_mean_7d",
+        "txn_count_30d",
+        "amt_sum_30d",
+        "amt_mean_30d",
+        "is_new_category",
+        "km_from_prev_txn",
+        "implied_speed_kmh"
+      ],
+      "categorical_features": [
+        "category",
+        "gender",
+        "state"
+      ],
+      "split": {
+        "train_rows": 1037340,
+        "validation_rows": 259335,
+        "train_end": "2020-03-06T07:15:17",
+        "validation_start": "2020-03-06T07:16:43",
+        "train_fraud_rate": 0.005753176393467908,
+        "validation_fraud_rate": 0.005930553145545337
+      },
+      "models": {
+        "dummy_prior": {
+          "threshold": 0.5,
+          "pr_auc": 0.005930553145545337,
+          "roc_auc": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "true_negatives": 257797,
+          "false_positives": 0,
+          "false_negatives": 1538,
+          "true_positives": 0,
+          "fit_and_score_seconds": 8.6
+        },
+        "logistic_regression": {
+          "threshold": 0.5,
+          "pr_auc": 0.663151149853946,
+          "roc_auc": 0.9867678696375314,
+          "precision": 0.11758474576271187,
+          "recall": 0.9382314694408322,
+          "f1": 0.20897900072411296,
+          "true_negatives": 246968,
+          "false_positives": 10829,
+          "false_negatives": 95,
+          "true_positives": 1443,
+          "fit_and_score_seconds": 36.0
+        }
+      }
+    }
+  }
+}

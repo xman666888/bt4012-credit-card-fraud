@@ -1,0 +1,172 @@
+{
+  "info": {
+    "dataset": "ieee_cis",
+    "source": "data/raw/train_transaction.csv",
+    "identity_source": "data/raw/train_identity.csv",
+    "entity": "provisional:card1+addr1",
+    "entity_coverage": 0.8887357333965523,
+    "include_anonymised": false,
+    "holdout_fraction": 0.2,
+    "holdout_starts_at_transactiondt": 12192900,
+    "sha256": {
+      "train_transaction.csv": "3a5c83ab6b3cc13dcabe5ffa9f522307fd5f7f7b6e6f6a60c32284ca6283d642",
+      "train_identity.csv": "b63c725d8377be90a995268d97f347c17d456b95db45807adcf9f59cd603c37c"
+    }
+  },
+  "random_state": 4012,
+  "feature_sets": {
+    "transaction_only": {
+      "numeric_features": [
+        "log_amt",
+        "amt_cents",
+        "hour",
+        "day_of_week",
+        "has_identity"
+      ],
+      "categorical_features": [
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "R_emaildomain",
+        "DeviceType"
+      ],
+      "split": {
+        "train_rows": 377945,
+        "validation_rows": 94487,
+        "train_end": "1970-04-20T13:31:04",
+        "validation_start": "1970-04-20T13:31:19",
+        "train_fraud_rate": 0.03411872097792007,
+        "validation_fraud_rate": 0.039201159947929345
+      },
+      "models": {
+        "dummy_prior": {
+          "threshold": 0.5,
+          "pr_auc": 0.039201159947929345,
+          "roc_auc": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "true_negatives": 90783,
+          "false_positives": 0,
+          "false_negatives": 3704,
+          "true_positives": 0,
+          "fit_and_score_seconds": 2.5
+        },
+        "logistic_regression": {
+          "threshold": 0.5,
+          "pr_auc": 0.17039159035197898,
+          "roc_auc": 0.8012056983295008,
+          "precision": 0.10636553674632127,
+          "recall": 0.7005939524838013,
+          "f1": 0.18469093626561334,
+          "true_negatives": 68981,
+          "false_positives": 21802,
+          "false_negatives": 1109,
+          "true_positives": 2595,
+          "fit_and_score_seconds": 8.0
+        }
+      }
+    },
+    "transaction_plus_history": {
+      "numeric_features": [
+        "log_amt",
+        "amt_cents",
+        "hour",
+        "day_of_week",
+        "has_identity",
+        "secs_since_prev",
+        "prior_txn_count",
+        "is_first_txn",
+        "amt_to_prior_mean",
+        "amt_prior_zscore",
+        "txn_count_1h",
+        "amt_sum_1h",
+        "amt_mean_1h",
+        "txn_count_24h",
+        "amt_sum_24h",
+        "amt_mean_24h",
+        "txn_count_7d",
+        "amt_sum_7d",
+        "amt_mean_7d",
+        "txn_count_30d",
+        "amt_sum_30d",
+        "amt_mean_30d",
+        "is_new_category"
+      ],
+      "categorical_features": [
+        "ProductCD",
+        "card4",
+        "card6",
+        "P_emaildomain",
+        "R_emaildomain",
+        "DeviceType"
+      ],
+      "split": {
+        "train_rows": 377945,
+        "validation_rows": 94487,
+        "train_end": "1970-04-20T13:31:04",
+        "validation_start": "1970-04-20T13:31:19",
+        "train_fraud_rate": 0.03411872097792007,
+        "validation_fraud_rate": 0.039201159947929345
+      },
+      "models": {
+        "dummy_prior": {
+          "threshold": 0.5,
+          "pr_auc": 0.039201159947929345,
+          "roc_auc": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "true_negatives": 90783,
+          "false_positives": 0,
+          "false_negatives": 3704,
+          "true_positives": 0,
+          "fit_and_score_seconds": 4.4
+        },
+        "logistic_regression": {
+          "threshold": 0.5,
+          "pr_auc": 0.1713553826385621,
+          "roc_auc": 0.8052554799284145,
+          "precision": 0.09585528139728305,
+          "recall": 0.7467602591792657,
+          "f1": 0.1699017199017199,
+          "true_negatives": 64693,
+          "false_positives": 26090,
+          "false_negatives": 938,
+          "true_positives": 2766,
+          "fit_and_score_seconds": 39.9
+        }
+      }
+    }
+  },
+  "key_sensitivity": {
+    "card1+addr1": {
+      "entities": 37531,
+      "coverage": 0.889,
+      "median_txn_per_entity": 2.0,
+      "pr_auc_txn": 0.17039159035197898,
+      "pr_auc_hist": 0.1713553826385621,
+      "roc_txn": 0.8012056983295008,
+      "roc_hist": 0.8052554799284145
+    },
+    "card1+addr1+P_emaildomain": {
+      "entities": 73407,
+      "coverage": 0.733,
+      "median_txn_per_entity": 2.0,
+      "pr_auc_txn": 0.17039159035197898,
+      "pr_auc_hist": 0.17120051943829986,
+      "roc_txn": 0.8012056983295008,
+      "roc_hist": 0.8060872077790038
+    },
+    "card1+addr1+first_use_day(D1)": {
+      "entities": 199070,
+      "coverage": 0.887,
+      "median_txn_per_entity": 1.0,
+      "pr_auc_txn": 0.17039159035197898,
+      "pr_auc_hist": 0.1842251087859018,
+      "roc_txn": 0.8012056983295008,
+      "roc_hist": 0.8254302295848056
+    }
+  }
+}

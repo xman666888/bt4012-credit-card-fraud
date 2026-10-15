@@ -1,37 +1,48 @@
 # Group 17 team plan
 
-Last aligned with the team discussion and consultation notes on **12 October 2026**.
+Last updated: **15 October 2026**. Reflects the 10 October meeting, the TA feedback of
+29 September, and the group chat up to 14 October.
 
 ## Members and current ownership
 
-| Member | GitHub username | Current responsibility | Status / hand-off |
+| Member | GitHub | Responsibility | Status (15 Oct) |
 |---|---|---|---|
-| Yang Tonghang (Gary) | `xman666888` | Feature engineering | Starts from Xin Yi's EDA outputs |
-| Phang Xin Yi | `xin-yi-phang` | Exploratory data analysis | Target: clear the main EDA work by 13 October |
-| Xiang Qiuyu | `xiang-qiuyu` | M3 algorithm proposal and M4 decision | Specify the method and integration rule |
-| Lycia Yeo Ying Xuan | `lyciayeo` | Card-ID reconstruction | Explain assumptions and leakage risk |
+| Yang Tonghang (Gary) | `xman666888` | Feature engineering | Review/merge PR #1, then start the leakage-safe feature pipeline for both datasets |
+| Phang Xin Yi | `xin-yi-phang` | Data audit and EDA | Done; PR #1 awaiting review |
+| Xiang Qiuyu | `xiang-qiuyu` | M3 algorithm and M4 decision | In progress; holds the remaining consultation booking |
+| Lycia Yeo Ying Xuan | `lyciayeo` | IEEE-CIS card-ID reconstruction | In progress; IEEE-CIS training files shared in the chat on 13 Oct |
 
-## Immediate timeline
+## Key dates
 
-- Internal checkpoint: **17 October 2026**.
-- Next team call: **17 October 2026, 9:00 pm Singapore time**.
-- Feature engineering begins after the EDA output and data-quality findings are available.
+| Date | Item |
+|---|---|
+| 17 Oct 2026 (Sat), 9:00 pm | Internal checkpoint and team call |
+| 20 Nov 2026 (Fri), 23:59 | Final report (`report17.pdf`), slides (`presentation17.pptx`) and video (`video17.mp4`) |
 
-## Consultation-action checklist
+The course guideline PDF gives 20 November. The Canvas assignment page shows 22 November.
+Plan for 20 November unless the teaching team confirms otherwise.
 
-- [ ] Define and validate the reconstructed card identifier.
-- [ ] Compare model results with and without card-history features.
-- [ ] Pair KS/PSI results with model performance by chronological window.
-- [ ] Select a concrete semi-supervised method for M3.
-- [ ] Decide how the M4 anomaly score interacts with the supervised model.
+## TA-feedback checklist
+
+- [ ] Define and validate the reconstructed IEEE-CIS card identifier (Lycia).
+- [ ] Compare results with and without card-history features (Gary, with Lycia).
+- [ ] Pair KS/PSI with model performance by chronological window, especially on Sparkov.
+- [ ] Name a concrete semi-supervised algorithm for M3 (Qiu Yu).
+- [ ] Decide whether the M4 anomaly score is an input feature or combined with model output (Qiu Yu).
 - [ ] Hide labels for all transactions in the last seven days in the delay experiment.
-- [ ] Define Precision@k at the transaction level or aggregate scores to card level.
-- [ ] Confirm with the teaching team whether a 2-code / 2-report contribution split is
-      acceptable and how GitHub contribution will be assessed.
-- [ ] Confirm the consultation-booking policy.
+- [ ] Define Precision@k per transaction, or aggregate scores to card level.
+
+## Questions for the next consultation
+
+- Is a 2-code / 2-report contribution split acceptable, and how will GitHub contribution
+  be assessed?
+- What is the consultation-booking limit?
+- Do the agreed dataset roles and the IEEE-CIS split (labelled training file only,
+  chronological split) look reasonable?
 
 ## Collaboration workflow
 
-Each member should work on a named branch, link the work to an issue, and open a pull
-request into `main`. Important experiment decisions and external code must be recorded in
-the repository so that contribution and reproducibility are visible.
+- Each member works on a named branch, links the work to an issue, and opens a pull
+  request into `main` reviewed by a teammate.
+- Contribution history is visible to the teaching team and may inform the peer-evaluation
+  adjustment, so commit your own work under your own account.
