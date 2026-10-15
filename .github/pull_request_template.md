@@ -12,5 +12,5 @@ Describe the research question and the change.
 ## Results and attribution
 
 - [ ] Metrics are compared on the same split.
-- [ ] New external code or notebooks are logged.
+- [ ] New external code or notebooks are cited.
 - [ ] No raw data, credentials or direct identifiers are committed.

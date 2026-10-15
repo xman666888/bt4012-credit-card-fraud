@@ -136,11 +136,7 @@ Do not commit raw data, Kaggle credentials, fitted models, or personal informati
 - Keep notebooks exploratory; move reusable logic into `src/`.
 - Record important experiments, random seeds and data versions.
 - Do not tune models against the final test set.
-- Add any external code or public notebook to
-  [`docs/attribution_log.md`](docs/attribution_log.md); acknowledge generative-AI
-  assistance in the final report.
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the complete collaboration rules.
+- Use `random_state=4012` and fit preprocessing on training data only.
 
 ## Course deliverables
 

@@ -15,4 +15,4 @@ Describe the concrete output and the file or report section it supports.
 - [ ] Result is reproducible from documented commands.
 - [ ] Leakage and test-set use have been checked.
 - [ ] Metrics or writing are reviewed by another teammate.
-- [ ] External resources are logged where applicable.
+- [ ] External resources are cited where applicable.
