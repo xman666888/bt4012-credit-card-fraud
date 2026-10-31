@@ -32,3 +32,4 @@ models/
 reports/figures/*.png
 reports/figures/*.pdf
 !reports/figures/.gitkeep
+results/m2/dev_*.csv
