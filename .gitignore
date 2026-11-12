@@ -32,3 +32,8 @@ models/
 reports/figures/*.png
 reports/figures/*.pdf
 !reports/figures/.gitkeep
+results/m2/dev_*.csv
+
+# M2 transaction-level prediction files
+results/m2/validation_static_*.csv
+results/m2/validation_adaptive_*.csv

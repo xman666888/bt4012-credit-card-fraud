@@ -1,0 +1,5 @@
+config_id,model,window,frequency_days,label_delay_days,transactions,fraud_cases,pr_auc,roc_auc
+catboost_expanding_14d,CatBoost,expanding,14,7,198630,1107,0.9744543313037398,0.9996021228790293
+lightgbm_expanding_7d,LightGBM,expanding,7,7,198630,1107,0.9860092651023951,0.9998050288230759
+lr_expanding_7d,Logistic Regression,expanding,7,7,198630,1107,0.679563930813158,0.9654730247850432
+rf_expanding_7d,Random Forest,expanding,7,7,198630,1107,0.9421253076688606,0.9976436760059241
