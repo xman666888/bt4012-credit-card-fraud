@@ -37,3 +37,10 @@ results/m2/dev_*.csv
 # M2 transaction-level prediction files
 results/m2/validation_static_*.csv
 results/m2/validation_adaptive_*.csv
+
+
+
+# M2 intermediate prediction files
+results/m2_selected_m0_m1/dev_*.csv
+results/m2_selected_m0_m1/validation_static_*.csv
+results/m2_selected_m0_m1/validation_adaptive_*.csv
