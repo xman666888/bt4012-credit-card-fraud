@@ -56,3 +56,9 @@ test_*.csv
 
 # Jupyter checkpoints
 .ipynb_checkpoints/
+
+
+
+# Sparkov final test: large transaction-level predictions
+sparkov_m3_test_predictions.csv
+sparkov_static_lightgbm_test_predictions.csv
