@@ -1,0 +1,2 @@
+config_id,fraud_thres,legit_thres,fraud_reliability,legit_reliability,transactions,fraud_cases,pr_auc,roc_auc,mean_pseudo_rows_per_retrain
+f0.50_l0.50_fw0.50_lw0.30,0.5,0.5,0.5,0.3,195815,1101,0.9864807624460699,0.9998024350336897,10778.208778694176

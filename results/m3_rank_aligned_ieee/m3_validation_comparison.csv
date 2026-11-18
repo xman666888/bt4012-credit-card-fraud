@@ -1,0 +1,3 @@
+model,strategy,fraud_thres,legit_thres,fraud_reliability,legit_reliability,transactions,fraud_cases,pr_auc,roc_auc,mean_pseudo_rows_per_retrain
+LightGBM,"M2 balanced, verified labels only",,,,,259335,1538,0.9852425891450806,0.9996277501698358,
+LightGBM,"M3 balanced, pseudo-labeling",0.5,0.5,0.5,0.3,259335,1538,0.9853224063131583,0.999522925804067,8400.57926620009
