@@ -6,16 +6,24 @@ Run the notebooks in this order:
 2. `02_exploratory_analysis.ipynb` - fraud patterns and early vs late comparisons of both datasets.
 3. `03_ieee_card_reconstruction.ipynb` - builds a card ID for IEEE-CIS.
 4. `04_feature_engineering.ipynb` - builds the feature tables of both datasets.
-5. `05_ieee_m0_m2.ipynb` - M0, M1 and M2 with LR, RF and CatBoost on IEEE-CIS.
-6. `05_sparkov_m0_m2.ipynb` - M0, M1 and M2 with LR, RF, Catboost and LightGBM on Sparkov.
-7. `05b_ieee_lightgbm_m0_m1.ipynb` - LightGBM M0 and M1 on IEEE-CIS.
-8. `05c_ieee_lightgbm_m2.ipynb` - LightGBM M2 on IEEE-CIS.
-9. `05d_ieee_drift_vs_performance.ipynb` - drift vs model performance on IEEE-CIS.
-10. `06_ieee_m2_catboost_tuning.ipynb` - feature selection and tuning of M2 CatBoost on IEEE-CIS.
-11. `07_ieee_m3_pseudo_labelling.ipynb` - M3 pseudo-labelling on IEEE-CIS.
-12. `08_ieee_m4_isolation_forest.ipynb` - M4 anomaly score features on IEEE-CIS.
-13. `09_sparkov_ieee_comparison.ipynb` - why the results differ between Sparkov and IEEE-CIS.
-14. `10_ieee_final_test.ipynb` - final model on the IEEE-CIS test set, with the daily alert budget.
+5. `04b_temporal_drift_and_label_delay.ipynb` - fraud rate and feature drift (PSI, KS) per week, and how much fraud the 7-day label delay hides.
+6. `04c_drift_and_network_diagnostics.ipynb` - adversarial validation, decay of a model trained once, and fraud clusters on shared entities.
+7. `05_ieee_m0_m2.ipynb` - M0, M1 and M2 with LR, RF and CatBoost on IEEE-CIS.
+8. `05_sparkov_m0_m2.ipynb` - M0, M1 and M2 with LR, RF, CatBoost and LightGBM on Sparkov.
+9. `05b_ieee_lightgbm_m0_m1.ipynb` - LightGBM M0 and M1 on IEEE-CIS.
+10. `05c_ieee_lightgbm_m2.ipynb` - LightGBM M2 on IEEE-CIS.
+11. `05d_ieee_drift_vs_performance.ipynb` - drift vs model performance on IEEE-CIS.
+12. `06_ieee_m2_catboost_tuning.ipynb` - feature selection and tuning of M2 CatBoost on IEEE-CIS.
+13. `06_sparkov_m3_lightgbm_pseudolabeling.ipynb` - early M3 pseudo-labelling experiment on Sparkov.
+14. `06_sparkov_m3_catboost_8x3.ipynb` - M3 pseudo-labelling with CatBoost on Sparkov.
+15. `07_ieee_m3_pseudo_labelling.ipynb` - M3 pseudo-labelling on IEEE-CIS.
+16. `07_sparkov_m4_catboost.ipynb` - M4 Isolation Forest score with CatBoost on Sparkov.
+17. `08_ieee_m4_isolation_forest.ipynb` - M4 anomaly score features on IEEE-CIS.
+18. `08_sparkov_final_test_catboost.ipynb` - final model on the Sparkov test set, with the daily alert budget.
+19. `09_sparkov_ieee_comparison.ipynb` - why the results differ between Sparkov and IEEE-CIS.
+20. `10_ieee_final_test.ipynb` - final model on the IEEE-CIS test set, with the daily alert budget.
+
+`archive/` keeps the earlier LightGBM versions of the Sparkov M3, M4 and final test notebooks.
 
 ## Data needed
 
@@ -28,7 +36,7 @@ They are too big for GitHub, so 04 has to be run before the other notebooks.
 The slow runs are saved in `data/interim/`.
 A rerun loads them instead of training again.
 
-- `data/interim/ieee/` - IEEE-CIS card IDs, scores and tuning results (05 to 07 and 10)
+- `data/interim/ieee/` - IEEE-CIS card IDs, scores and tuning results (05 to 08 and 10)
 - `data/interim/sparkov/` - Sparkov label delay check (09)
 - `data/interim/comparison_runs/` - other runs of 09
 
