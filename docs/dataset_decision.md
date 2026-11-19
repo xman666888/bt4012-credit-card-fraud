@@ -49,8 +49,8 @@ real data. It has three known complications:
   left-joined on `TransactionID`; about 24.4% of transactions have an identity record.
 - The official competition test files have **no `isFraud` labels**, so they are not used.
 - The labelled training file is split chronologically by `TransactionDT` into train,
-  validation and a final held-out test block. The exact boundaries are recorded in
-  `configs/project.yaml` once agreed.
+  validation and a final held-out test block. The final split is 64% / 16% / 20% (days 1-109, 109-141 and 141-182), as in
+  notebook 05_ieee_m0_m2.
 
 ### Both datasets
 
