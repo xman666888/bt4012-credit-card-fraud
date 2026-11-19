@@ -47,3 +47,21 @@ results/m2/validation_adaptive_*.csv
 results/m2_selected_m0_m1/dev_*.csv
 results/m2_selected_m0_m1/validation_static_*.csv
 results/m2_selected_m0_m1/validation_adaptive_*.csv
+
+
+# Generated experiment outputs
+development_*.csv
+validation_*.csv
+test_*.csv
+
+# Old notebooks
+**/NOT USED_*.ipynb
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+
+
+# Sparkov final test: large transaction-level predictions
+sparkov_m3_test_predictions.csv
+sparkov_static_lightgbm_test_predictions.csv

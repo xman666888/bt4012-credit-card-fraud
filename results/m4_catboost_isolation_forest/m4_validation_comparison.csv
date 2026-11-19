@@ -1,0 +1,3 @@
+stage,model,strategy,pr_auc,roc_auc
+M1,Static CatBoost,Original approved features,0.9892281969982297,0.9998752937595534
+M4,Static CatBoost + Isolation Forest,Original features + iforest_score,0.9865600205011283,0.9997644541367624

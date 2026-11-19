@@ -1,0 +1,3 @@
+model,transactions,fraud_cases,pr_auc,roc_auc
+M3 LightGBM + pseudo-labels,259335,1538,0.9853224063131583,0.999522925804067
+M4 LightGBM + pseudo-labels + Isolation Forest,259335,1538,0.9839727106388803,0.9994850259016463

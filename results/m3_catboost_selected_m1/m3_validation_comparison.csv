@@ -1,0 +1,4 @@
+stage,model,strategy,transactions,fraud_cases,pr_auc,roc_auc
+M1,CatBoost,"Static, balanced verified labels",259335,1538,0.9892281969982297,0.9998752937595534
+Control,CatBoost,"Weekly, verified-only",259335,1538,0.9874649521297493,0.9997970449758573
+M3,CatBoost,"Weekly, pseudo-labelled",259335,1538,0.988218181334105,0.9998454192440699

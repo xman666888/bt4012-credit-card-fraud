@@ -1,0 +1,3 @@
+model,transactions,fraud_cases,pr_auc,roc_auc
+Adaptive M3 LightGBM,555719,2145,0.9726290386622848,0.9992123671747354
+Static verified-only LightGBM,555719,2145,0.9716527567292337,0.9993790500909695

@@ -1,0 +1,2 @@
+model,validation_rows,fraud_cases,pr_auc,roc_auc,fraud_rate_baseline
+Isolation Forest standalone,259335,1538,0.6121832535420872,0.9701964620270848,0.005930553145545337
