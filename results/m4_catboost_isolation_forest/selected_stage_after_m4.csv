@@ -1,0 +1,2 @@
+selected_stage,model,selected_validation_pr_auc,m1_validation_pr_auc,m4_validation_pr_auc,iforest_standalone_pr_auc,iforest_score_col,iforest_n_estimators,iforest_fit_cap,iforest_seed
+M1,Static CatBoost,0.9892281969982297,0.9892281969982297,0.9865600205011283,0.6121832535420872,iforest_score,200,100000,100
