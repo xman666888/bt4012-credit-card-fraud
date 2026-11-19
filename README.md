@@ -36,15 +36,18 @@ Validation PR-AUC (CatBoost). The primary metric is PR-AUC; a random ranking sco
 | M0 baseline | 0.987 | 0.626 |
 | M1 class weights, change vs M0 | +0.002 | -0.035 |
 | M2 periodic retraining, change vs static | +0.001 | +0.053 |
-| M3 pseudo-labelling, change vs M2 | TBD | +0.0005 (mean of 3 seeds) |
-| M4 anomaly score, change vs best previous stage | TBD | -0.004 |
-| Final model on the test set | TBD | 0.622 (static model: 0.583) |
+| M3 pseudo-labelling, change vs M2 | +0.0008 | +0.0005 (mean of 3 seeds) |
+| M4 anomaly score, change vs best previous stage | -0.003 | -0.004 |
+| Final model | M1 CatBoost | Tuned M2 CatBoost |
+| Final model, test PR-AUC | 0.974 | 0.622 (static model: 0.583) |
 
 - Periodic retraining helps only on IEEE-CIS, where the data drifts. The decline of a static
   model follows the time since training rather than the PSI of each week (notebook 05d).
-- Class weights, pseudo-labels and anomaly scores do not improve PR-AUC on either dataset.
-- The final IEEE-CIS model is the tuned M2 CatBoost (115 features). A daily top-K alert rule
-  chosen on validation (K = 750) catches 90.9% of test fraud.
+- Pseudo-labels and anomaly scores do not beat the best previous stage on either dataset.
+  Class weights help slightly on Sparkov (+0.002) but lower PR-AUC on IEEE-CIS.
+- The final models are M1 CatBoost for Sparkov and the tuned M2 CatBoost (115 features) for
+  IEEE-CIS. A daily top-K alert rule chosen on validation catches 99.3% of Sparkov test fraud
+  (K = 50) and 90.9% of IEEE-CIS test fraud (K = 750).
 
 ## Repository structure
 
@@ -110,12 +113,16 @@ in `data/interim/`, so they rerun without retraining. Run them from the `noteboo
 | `05d_ieee_drift_vs_performance` | Drift vs model performance by validation week |
 | `06_ieee_m2_catboost_tuning` | Feature selection and Optuna tuning of the IEEE-CIS M2 CatBoost |
 | `06_sparkov_m3_lightgbm_pseudolabeling` | Early Sparkov M3 experiment |
+| `06_sparkov_m3_catboost_8x3` | Sparkov M3 with CatBoost |
 | `07_ieee_m3_pseudo_labelling` | IEEE-CIS M3 |
+| `07_sparkov_m4_catboost` | Sparkov M4: Isolation Forest score |
 | `08_ieee_m4_isolation_forest` | IEEE-CIS M4: six anomaly score variants |
+| `08_sparkov_final_test_catboost` | Sparkov final model on the test set and the daily alert rule |
 | `09_sparkov_ieee_comparison` | Why the results differ between the two datasets |
 | `10_ieee_final_test` | IEEE-CIS final model on the test set and the daily alert rule |
 
-`notebooks/README.md` lists the saved-run folders used by each notebook.
+`notebooks/archive/` keeps the earlier LightGBM versions of the Sparkov M3 to final test
+notebooks. `notebooks/README.md` lists the saved-run folders used by each notebook.
 
 ### 4. Tests
 

@@ -15,10 +15,15 @@ Run the notebooks in this order:
 11. `05d_ieee_drift_vs_performance.ipynb` - drift vs model performance on IEEE-CIS.
 12. `06_ieee_m2_catboost_tuning.ipynb` - feature selection and tuning of M2 CatBoost on IEEE-CIS.
 13. `06_sparkov_m3_lightgbm_pseudolabeling.ipynb` - early M3 pseudo-labelling experiment on Sparkov.
-14. `07_ieee_m3_pseudo_labelling.ipynb` - M3 pseudo-labelling on IEEE-CIS.
-15. `08_ieee_m4_isolation_forest.ipynb` - M4 anomaly score features on IEEE-CIS.
-16. `09_sparkov_ieee_comparison.ipynb` - why the results differ between Sparkov and IEEE-CIS.
-17. `10_ieee_final_test.ipynb` - final model on the IEEE-CIS test set, with the daily alert budget.
+14. `06_sparkov_m3_catboost_8x3.ipynb` - M3 pseudo-labelling with CatBoost on Sparkov.
+15. `07_ieee_m3_pseudo_labelling.ipynb` - M3 pseudo-labelling on IEEE-CIS.
+16. `07_sparkov_m4_catboost.ipynb` - M4 Isolation Forest score with CatBoost on Sparkov.
+17. `08_ieee_m4_isolation_forest.ipynb` - M4 anomaly score features on IEEE-CIS.
+18. `08_sparkov_final_test_catboost.ipynb` - final model on the Sparkov test set, with the daily alert budget.
+19. `09_sparkov_ieee_comparison.ipynb` - why the results differ between Sparkov and IEEE-CIS.
+20. `10_ieee_final_test.ipynb` - final model on the IEEE-CIS test set, with the daily alert budget.
+
+`archive/` keeps the earlier LightGBM versions of the Sparkov M3, M4 and final test notebooks.
 
 ## Data needed
 
