@@ -95,7 +95,7 @@ The raw files are not committed. Place them in `data/raw/` (see [`data/README.md
 
 Run `03` and `04` first: they build the IEEE-CIS card IDs and the feature tables in
 `data/processed/`, which are too large for GitHub. The other notebooks load the saved runs
-in `results/` and `data/interim/`, so they rerun without retraining. Run them from the `notebooks/` folder.
+in `results/`, so they rerun without retraining. Run them from the `notebooks/` folder.
 
 | Notebook | Content |
 |---|---|
