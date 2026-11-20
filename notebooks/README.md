@@ -36,8 +36,8 @@ They are too big for GitHub, so 04 has to be run before the other notebooks.
 The slow runs are saved, so a rerun loads them instead of training again.
 
 - `results/ieee/` - IEEE-CIS scores and tuning results (05 to 08 and 10_ieee)
-- `results/comparison_runs/` and `results/sparkov_delay_check/` - extra runs of 09
-- `results/` (other folders) - Sparkov results (05_sparkov, 07_sparkov, 08_sparkov and 10_sparkov)
+- `results/sparkov/` - Sparkov results (05_sparkov to 08_sparkov and 10_sparkov), and the label delay check of 09 in `delay_check/`
+- `results/comparison_runs/` - other runs of 09
 
 The IEEE-CIS card IDs from 03 are saved in `data/processed/ieee_card_id.csv` and used by 04, 04b and 04c.
 
