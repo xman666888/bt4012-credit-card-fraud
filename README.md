@@ -57,7 +57,7 @@ Validation PR-AUC (CatBoost). The primary metric is PR-AUC; a random ranking sco
 ├── docs/                 # Dataset decision and feature documentation
 ├── notebooks/            # All experiments, numbered in run order
 ├── reports/              # Feature ablation summaries and weekly drift tables
-├── results/              # Saved model scores and result tables, so slow notebooks rerun without retraining
+├── results/              # Saved scores and result tables: comparison_runs/, ieee/ and sparkov/
 ├── scripts/              # Data download helper
 ├── src/bt4012_fraud/     # Data loading, leakage-safe features, evaluation and baseline
 └── tests/                # Tests for the leakage rules and evaluation helpers
