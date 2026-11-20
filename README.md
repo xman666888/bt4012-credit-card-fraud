@@ -53,12 +53,11 @@ Validation PR-AUC (CatBoost). The primary metric is PR-AUC; a random ranking sco
 
 ```text
 .
-├── data/                 # Raw data (not committed), processed features, saved runs
-│   └── interim/          # Saved model scores, so slow notebooks rerun without retraining
+├── data/                 # Raw data (not committed), processed features and IEEE-CIS card IDs
 ├── docs/                 # Dataset decision and feature documentation
 ├── notebooks/            # All experiments, numbered in run order
 ├── reports/              # Feature ablation summaries and weekly drift tables
-├── results/              # Sparkov result tables (M2 to final test)
+├── results/              # Saved model scores and result tables, so slow notebooks rerun without retraining
 ├── scripts/              # Data download helper
 ├── src/bt4012_fraud/     # Data loading, leakage-safe features, evaluation and baseline
 └── tests/                # Tests for the leakage rules and evaluation helpers
@@ -78,8 +77,8 @@ python -m pip install -e ".[boosting,dev]"
 python -m pip install optuna
 ```
 
-Some saved runs in `data/interim/` were written with pandas 3. Notebook 08 falls back to
-the CSV copies in `data/interim/ieee/m2_tuning/` when a pickle cannot be read with pandas 2.
+Some saved runs in `results/ieee/` were written with pandas 3. Notebook 08 falls back to
+the CSV copies in `results/ieee/m2_tuning/` when a pickle cannot be read with pandas 2.
 
 ### 2. Data
 
@@ -96,7 +95,7 @@ The raw files are not committed. Place them in `data/raw/` (see [`data/README.md
 
 Run `03` and `04` first: they build the IEEE-CIS card IDs and the feature tables in
 `data/processed/`, which are too large for GitHub. The other notebooks load the saved runs
-in `data/interim/`, so they rerun without retraining. Run them from the `notebooks/` folder.
+in `results/` and `data/interim/`, so they rerun without retraining. Run them from the `notebooks/` folder.
 
 | Notebook | Content |
 |---|---|
@@ -113,13 +112,13 @@ in `data/interim/`, so they rerun without retraining. Run them from the `noteboo
 | `05d_ieee_drift_vs_performance` | Drift vs model performance by validation week |
 | `06_ieee_m2_catboost_tuning` | Feature selection and Optuna tuning of the IEEE-CIS M2 CatBoost |
 | `06_sparkov_m3_lightgbm_pseudolabeling` | Early Sparkov M3 experiment |
-| `06_sparkov_m3_catboost_8x3` | Sparkov M3 with CatBoost |
 | `07_ieee_m3_pseudo_labelling` | IEEE-CIS M3 |
-| `07_sparkov_m4_catboost` | Sparkov M4: Isolation Forest score |
+| `07_sparkov_m3_catboost_8x3` | Sparkov M3 with CatBoost |
 | `08_ieee_m4_isolation_forest` | IEEE-CIS M4: six anomaly score variants |
-| `08_sparkov_final_test_catboost` | Sparkov final model on the test set and the daily alert rule |
+| `08_sparkov_m4_catboost` | Sparkov M4: Isolation Forest score |
 | `09_sparkov_ieee_comparison` | Why the results differ between the two datasets |
 | `10_ieee_final_test` | IEEE-CIS final model on the test set and the daily alert rule |
+| `10_sparkov_final_test_catboost` | Sparkov final model on the test set and the daily alert rule |
 
 `notebooks/archive/` keeps the earlier LightGBM versions of the Sparkov M3 to final test
 notebooks. `notebooks/README.md` lists the saved-run folders used by each notebook.
